@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   'http://localhost:3000',
-  'https://scentia-fragrance.vercel.app' // Replace with your actual frontend URL
+  'https://scentia-fragrances-git-main-tahabinkhalids-projects.vercel.app'
 ].filter(Boolean);
 
 app.use(cors({
