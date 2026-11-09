@@ -60,6 +60,3 @@ Built with a striking **black-and-gold** palette, serif typography, and cinemati
 
 ---
 
-## 🖼️ Preview
-
-> *Add your screenshots here.*
