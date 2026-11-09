@@ -1,18 +1,23 @@
 import axios from 'axios';
 
-// Ensure this matches your backend port (5000 is standard for Flask/Node)
-const API = axios.create({ baseURL: 'http://127.0.0.1:5000/api' });
+// Vercel will inject the production URL during build. 
+// If it's not found (like on your local machine), it falls back to localhost.
+const BASE_URL = process.env.REACT_APP_API_URL
+  ? `${process.env.REACT_APP_API_URL}/api`
+  : 'http://127.0.0.1:5000/api';
 
+const API = axios.create({ baseURL: BASE_URL });
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem('token');
-  
+
   if (token && token !== 'null') {
     req.headers.Authorization = `Bearer ${token}`;
   }
-  
+
   return req;
 });
+
 // --- Product Endpoints ---
 
 // Get all products for the Shop page
@@ -22,8 +27,7 @@ export const fetchProducts = () => API.get('/products');
 export const fetchProductById = (id) => API.get(`/products/${id}`);
 
 // Get related products
-// Note: Ensure your backend uses 'category' and 'exclude' to filter the list
-export const fetchRelatedProducts = (category, currentProductId) => 
+export const fetchRelatedProducts = (category, currentProductId) =>
   API.get(`/products`, {
     params: {
       category: category,
