@@ -70,3 +70,202 @@ Built with a striking **black-and-gold** palette, serif typography, and cinemati
 <img width="463" height="442" alt="Screenshot 2026-11-09 232400" src="https://github.com/user-attachments/assets/d0b80725-c9fa-4178-9557-5b2ab383ef44" />
 <img width="947" height="443" alt="Screenshot 2026-11-09 232219" src="https://github.com/user-attachments/assets/8ab8294a-5e7b-404b-8ae2-5a851a2b7499" />
 
+## ⚙️ Getting Started
+
+### Prerequisites
+- **Node.js** (v18+)
+- **MongoDB** (local or Atlas URI)
+- **npm** or **yarn**
+- **1LINK / PayFast Sandbox Credentials** (for payment testing)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/TahaBinKhalid/Scentia-Fragrances.git
+cd Scentia-Fragrances
+```
+
+### 2. Install Dependencies
+
+**Client:**
+```bash
+cd client
+npm install
+```
+
+**Server:**
+```bash
+cd ../server
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the **`server/`** directory:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_key
+CLIENT_URL=http://localhost:3000
+
+# 1LINK / PayFast
+PAYFAST_MERCHANT_ID=your_merchant_id
+PAYFAST_SECRET=your_secret
+PAYFAST_API_URL=https://sandbox.1link.com.pk/api
+```
+
+Create a `.env` file in the **`client/`** directory (optional, for API base URL):
+
+```env
+REACT_APP_API_URL=http://localhost:5000
+```
+
+> ⚠️ **Never commit your `.env` files.** They are already in `.gitignore`.
+
+### 4. Run the App
+
+**Start the backend:**
+```bash
+cd server
+npm run dev
+# or: npm start
+```
+
+**Start the frontend (in a new terminal):**
+```bash
+cd client
+npm start
+```
+
+The app will be live at **`http://localhost:3000`** and the API at **`http://localhost:5000`**.
+
+---
+
+## 📁 Project Structure
+
+```text
+Scentia-Fragrances/
+│
+├── client/                     # React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/         # Reusable UI (Navbar, ProductCard, Loader...)
+│   │   ├── context/            # AuthContext
+│   │   ├── pages/              # Home, Login, Signup, Product, Cart, Checkout
+│   │   ├── redux/              # cartSlice, store
+│   │   ├── App.js
+│   │   └── index.js
+│   └── package.json
+│
+├── server/                     # Express backend
+│   ├── controllers/            # authController, productController, orderController
+│   ├── models/                 # User, Product, Order
+│   ├── routes/                 # authRoutes, productRoutes, paymentRoutes
+│   ├── middleware/             # authMiddleware
+│   ├── index.js                # Server entry
+│   └── package.json
+│
+├── .gitignore
+├── vercel.json                 # (if deploying both on Vercel)
+└── README.md
+```
+
+---
+
+## 🔌 API Endpoints (Sample)
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/auth/signup` | Register a new user |
+| `POST` | `/api/auth/login` | Authenticate and receive JWT |
+| `GET` | `/api/products` | Fetch all fragrances |
+| `GET` | `/api/products/:id` | Fetch a single fragrance |
+| `POST` | `/api/cart` | Sync cart to database |
+| `POST` | `/api/payment/initiate` | Start 1LINK handshake |
+
+---
+
+## 🌐 Deployment
+
+### Option A: Frontend on Vercel + Backend on Render
+- Deploy `client/` to **Vercel**
+- Deploy `server/` to **Render** as a Web Service
+- Update CORS in `server/index.js` to allow your Vercel domain
+- Set `REACT_APP_API_URL` on Vercel to your Render URL
+
+### Option B: Full Stack on Vercel
+- Export your Express `app` from `server/index.js`
+- Add a `vercel.json` with rewrites for `/api/*`
+- Deploy the whole repo as one Vercel project
+
+> See the deployment notes in the repo or open an issue for a step-by-step guide.
+
+---
+
+## 🧪 Roadmap
+
+- [ ] Product reviews and ratings
+- [ ] Wishlist / favorites
+- [ ] Admin dashboard for inventory
+- [ ] Email order confirmations (Nodemailer)
+- [ ] Stripe / international payments
+- [ ] Fragrance recommendation quiz
+- [ ] Multi-language support (English / Urdu)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome and appreciated. To contribute:
+
+1. Fork the repo
+2. Create your feature branch
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. Commit your changes
+   ```bash
+   git commit -m "Add some AmazingFeature"
+   ```
+4. Push to the branch
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. Open a Pull Request
+
+Please follow the existing code style and keep PRs focused.
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+
+---
+
+## 👤 Author
+
+**Taha Bin Khalid**
+
+[![GitHub](https://img.shields.io/badge/GitHub-TahaBinKhalid-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TahaBinKhalid)
+
+> *"Built with obsession, scented with ambition."*
+
+---
+
+## 💛 Acknowledgments
+
+- Inspired by the timeless elegance of luxury fragrance houses.
+- Built with the MERN stack and a relentless attention to detail.
+- Icons and badges courtesy of [Shields.io](https://shields.io).
+- Fonts: **Playfair Display** & **Inter** via Google Fonts.
+
+---
+
+<div align="center">
+
+### ⭐ If you love this project, give it a star!
+
+**Scentia Fragrances** — *Wear the Invisible. Remember the Moment.*
+
+</div>
