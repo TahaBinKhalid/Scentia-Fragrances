@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-// Vercel will inject the production URL during build. 
-// If it's not found (like on your local machine), it falls back to localhost.
-const BASE_URL = process.env.REACT_APP_API_URL
-  ? `${process.env.REACT_APP_API_URL}/api`
-  : 'http://127.0.0.1:5000/api';
+const BASE_URL = 'https://scentia-fragrances.ethiodeploy.app/api';
 
 const API = axios.create({ baseURL: BASE_URL });
 
